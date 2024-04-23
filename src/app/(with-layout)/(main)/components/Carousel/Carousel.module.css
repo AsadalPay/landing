@@ -1,0 +1,120 @@
+.article {
+  background-color: #efefef;
+}
+
+.headerText {
+  padding: 3em;
+  text-align: center;
+}
+
+.carousel {
+  overflow: hidden;
+  padding-left: 0.75em;
+}
+.carouselContainer {
+  display: flex;
+  gap: 1em;
+}
+.carouselSlide {
+  flex: 0 0 19em;
+  height: 20em;
+  min-width: 0;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselSlideIcon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 90%;
+  height: 90%;
+}
+
+.carouselSlideText {
+  text-align: center;
+  padding: 0.5em;
+}
+
+.imageContainer {
+  position: relative;
+  height: 75%;
+  width: 80%;
+}
+
+.buttonArea {
+  display: flex;
+  margin: 0 auto;
+  padding: 2em;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.buttonRight,
+.buttonLeft {
+  border: none;
+  background: none;
+}
+
+.buttonIcon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 2.2em;
+  height: 2.2em;
+  background-color: #b2b2b2;
+  border-radius: 50%;
+}
+
+.buttonLeftIcon {
+  background-image: url("../../../../../../public//icons/chevron-left.svg");
+}
+
+.buttonRightIcon {
+  background-image: url("../../../../../../public//icons/chevron-right.svg");
+}
+
+@media (min-width: 660px) {
+  .buttonArea {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carouselContainer {
+    gap: 1.5em;
+  }
+
+  .carouselSlide {
+    flex: 0 0 20em;
+    height: 22em;
+    border-radius: 30px;
+  }
+
+  .carousel {
+    padding-left: 1.25em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel {
+    padding-left: 16em;
+  }
+}
+
+@media (min-width: 1526px) {
+  .carousel {
+    padding-left: 20em;
+  }
+
+  .carouselSlide {
+    flex: 0 0 30em;
+    height: 28em;
+    border-radius: 40px;
+  }
+}

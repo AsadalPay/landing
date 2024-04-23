@@ -1,0 +1,15 @@
+.main {
+  position: relative;
+  padding-bottom: 6em;
+  background-color: #eaeaea;
+}
+
+.header {
+  color: var(--primary-green);
+  text-align: center;
+  font-size: 1.5em;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 3em;
+  padding-bottom: 1em;
+}

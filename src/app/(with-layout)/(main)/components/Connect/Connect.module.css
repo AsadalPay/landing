@@ -1,0 +1,96 @@
+.article {
+  background-image: url("../../../../../../public/plus_dots.svg");
+  background-size: 260%;
+  background-repeat: repeat-y;
+  background-position: center;
+  background-color: #efefef;
+  padding-bottom: 4em;
+}
+
+.iconsContainer {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  width: 95%;
+}
+
+.iconWrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.iconContainer {
+  width: 17em;
+  height: 13em;
+  padding: 1.5em;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.headerText {
+  text-align: center;
+  width: 70%;
+  margin-inline: auto;
+  padding: 2em;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .article {
+    background-size: 100%;
+  }
+
+  .container {
+    width: 60%;
+    margin-inline: auto;
+  }
+
+  .headerText {
+    font-size: 1.3rem;
+    width: 90%;
+  }
+
+  .iconContainer {
+    width: 10em;
+    height: 12em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article {
+    background-size: 100%;
+  }
+
+  .container {
+   max-width: 650px;
+    margin-inline: auto;
+  }
+
+  .headerText {
+    font-size: 1.3rem;
+    width: 90%;
+  }
+
+  .iconContainer {
+    width: 12em;
+    height: 14em;
+    border-radius: 35px;
+    padding: 2em;
+  }
+
+  .iconContainer > p {
+    font-size: 1.1rem;
+  }
+
+  .iconsContainer {
+    width: 100%;
+  }
+}

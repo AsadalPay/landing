@@ -1,0 +1,76 @@
+.footer {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-top: 3em;
+  padding-bottom: 4em;
+}
+
+.logo {
+  margin: 0 auto;
+  width: 8em;
+}
+
+.nav {
+  display: flex;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.navList {
+  font-size: 1rem;
+  font-weight: 500;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+}
+
+.navList > li {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.navList > li > a {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.address > p {
+  font-size: 0.9rem;
+  font-style: normal;
+  color: #52525b;
+}
+
+.register {
+  color: #52525b;
+  font-size: 0.9rem;
+  width: 70%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.logoArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  width: 60%;
+  margin-inline: auto;
+}
+
+@media (min-width: 756px) {
+  .logoArea {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1556px) {
+  .logoArea {
+    width: 30%;
+  }
+}

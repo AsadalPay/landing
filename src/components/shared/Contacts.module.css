@@ -1,0 +1,54 @@
+.article {
+  padding: 2em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.mail {
+  color: var(--primary-green);
+}
+
+.realAddress {
+  text-align: center;
+  font-style: normal;
+}
+
+.link {
+  text-decoration: none;
+  font-style: normal;
+}
+
+.actionButtonsArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.button {
+  border: 1px solid #000;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    font-size: 1.5rem;
+  }
+}

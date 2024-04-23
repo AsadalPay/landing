@@ -1,0 +1,176 @@
+.mainContainer {
+  background-color: #efefef;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.article {
+  padding-top: 5em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  width: 94%;
+  margin: 0 auto;
+}
+
+.container > * {
+  flex: 1;
+  font-size: 1.2rem;
+}
+
+.fact {
+  background-color: white;
+  padding: 2em 1.25em;
+  padding-bottom: 0;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  position: relative;
+  align-items: center;
+}
+
+.factIcon {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 11em;
+}
+
+.iconWrapper {
+  margin: 0 auto;
+}
+
+.iconContainer {
+  position: relative;
+  max-width: 200px;
+  height: auto;
+}
+
+.factText {
+  padding: 1em;
+  padding-top: 0;
+}
+
+.header {
+  padding: 2em;
+  text-align: center;
+}
+
+.line {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: auto;
+}
+
+.green {
+  border-bottom: 3px solid #2ac058;
+}
+
+.gold {
+  border-bottom: 3px solid #aa5d00;
+}
+
+.blue {
+  border-bottom: 3px solid #0092b2;
+}
+
+@media (min-width: 640px) {
+  .container {
+    flex-direction: row;
+    gap: 0.75em;
+    margin: 0 auto;
+  }
+
+  .factText > p {
+    font-size: 0.8rem;
+    flex: 1;
+  }
+
+  .fact {
+    padding: 0.5em;
+    border-radius: 30px;
+  }
+
+  .factIcon {
+    height: 7em;
+    width: 7em;
+    margin: 0 auto;
+  }
+
+  .iconContainer {
+    max-width: 130px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 70%;
+    gap: 1.75em;
+  }
+
+  .factText {
+    padding: 0;
+  }
+
+  .factText > p {
+    font-size: 1.1rem;
+    flex: 1;
+  }
+
+  .fact {
+    padding: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 1.5em;
+  }
+
+  .factText {
+    padding: 0;
+  }
+
+  .factText > p {
+    font-size: 1.1rem;
+    flex: 1;
+  }
+
+  .fact {
+    padding: 0.75em;
+    padding-top: 1em;
+    padding-bottom: 0;
+  }
+  .iconContainer {
+    max-width: 180px;
+    flex-basis: 40%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .factText {
+    padding: 0;
+  }
+
+  .factText > p {
+    font-size: 1.2rem;
+    flex: 1;
+  }
+
+  .fact {
+    padding: 0.75em;
+    padding-top: 1em;
+    padding-bottom: 0;
+  }
+  .iconContainer {
+    flex-basis: 45%;
+  }
+}

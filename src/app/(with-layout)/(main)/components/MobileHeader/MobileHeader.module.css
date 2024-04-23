@@ -1,0 +1,64 @@
+.mobileWrapper {
+  border-bottom: 2px solid #ebecf0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.mobileHeader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+  width: 100vw;
+  max-height: 100vh;
+  padding-top: 5em;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.mobileHeader[data-is-open="true"] {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.menuClose {
+  position: fixed;
+  top: 0.8em;
+  right: 1.5em;
+}
+
+.navListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  padding-left: 2em;
+}
+
+.navListWrapper > li > a {
+  font-size: 1.75rem;
+}
+
+.contactsButton {
+  font-size: 1.75rem;
+  padding-left: 1.25em;
+  padding-top: 2em;
+}
+
+@media screen and (min-width: 768px) {
+  .mobileWrapper {
+    display: none;
+  }
+}

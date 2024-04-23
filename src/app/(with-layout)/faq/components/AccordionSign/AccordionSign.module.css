@@ -1,0 +1,31 @@
+.svgContainer {
+  fill: #6574cd;
+  flex-shrink: 0;
+  margin-left: 2rem;
+
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.rectOne {
+  transform: none;
+  transform-origin: center;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  fill: #00849a;
+}
+
+.rectTwo {
+  transform-origin: center;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transform: rotate(90deg);
+  fill: #00849a;
+}
+
+.rotate {
+  transform: rotate(-45deg);
+}

@@ -1,0 +1,97 @@
+.accordionContainer {
+  margin: 1em;
+  border-top: 1px solid slategray;
+}
+
+.accordionContainer:last-child {
+  border-bottom: 1px solid slategray;
+}
+
+.accordionContent {
+  display: grid;
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.accordionContentDescription {
+  overflow: hidden;
+  padding-inline: 1em;
+}
+
+.accordionTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.accordionTitleText {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.hidden {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.rotate {
+  transform: rotate(45deg);
+}
+
+.list {
+  list-style: circle;
+}
+
+.contentListItemWrapper {
+  padding-top: 0.5em;
+}
+
+.contentListItem > h4,
+.contetnListItem > p,
+.list > li > p {
+  color: #52525b;
+}
+
+@media (min-width: 640px) {
+  .accordionTitleText {
+    font-size: 1.2rem;
+  }
+
+  .contentListItem > h4,
+  .contetnListItem > p,
+  .list > li > p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .accordionTitleText {
+    font-size: 1.3rem;
+  }
+
+  .contentListItem > h4,
+  .contetnListItem > p,
+  .list > li > p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .accordionTitleText {
+    font-size: 1.4rem;
+  }
+
+  .contentListItem > h4,
+  .contetnListItem > p,
+  .list > li > p {
+    font-size: 1.3rem;
+  }
+}

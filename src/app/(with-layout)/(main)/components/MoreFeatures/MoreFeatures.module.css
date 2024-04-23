@@ -1,0 +1,41 @@
+.section {
+  background-color: #efefef;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.header {
+  text-align: center;
+  padding: 2em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: white;
+  border-radius: 35px;
+  padding: 2em;
+}
+
+.featureIcon {
+  margin: 0 auto;
+}
+
+.featureText > h2 {
+  font-size: 1.1rem;
+  padding-top: 1em;
+}
+
+.featureText > p {
+  font-size: 1rem;
+}

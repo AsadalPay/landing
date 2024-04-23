@@ -1,0 +1,8 @@
+.notActive {
+  color: inherit;
+  text-decoration: none;
+}
+
+.active {
+  color: var(--primary-green);
+}

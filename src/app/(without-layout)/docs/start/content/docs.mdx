@@ -1,0 +1,673 @@
+# Процесс работы
+
+## Шаг 1 - Создайте заказ
+
+---
+
+<br />
+
+Для доступа к API необходимо обратиться к нашим контактным лицам с запросом на получение ключа `API_KEY`.
+После получения ключа, вам потребуется включить его в заголовки (headers) запросов веб-интерфейса следующим образом:
+
+<br />
+
+```javascript
+
+api-key: <API_KEY>
+
+```
+
+<br />
+
+Для создания заказа первоначально требуется отправить POST-запрос методом HTTP с телом, содержащим данные в формате JSON, по следующему URL-адресу:
+
+<br />
+
+```html
+https://api-dev.asadalpay.com/api/orders/create-order
+```
+
+<br />
+
+Пример JSON, который нужно приложить к телу запроса:
+
+<br />
+
+```json
+{
+  "products": [
+    {
+      "name": "Шоколад",
+      "price": 200,
+      "quantity": 2
+    },
+    {
+      "name": "Очки",
+      "price": 2000,
+      "quantity": 4
+    }
+  ],
+  "currency": "KZT",
+  "external_id": "string",
+  "description": "Оплата за груз",
+  "attempts": 5,
+  "mcc": "5533",
+  "capture_method": "HOLD",
+  "back_url": "https://asadalpay.com",
+  "notify_url": "https://asadalpay.com"
+}
+```
+
+<br />
+
+Поля содержат следующие данные:
+
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Поле</th>
+      <th>Тип данных</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>products</td>
+      <td>array</td>
+      <td>Список покупок</td>
+    </tr>
+    <tr>
+      <td>currency</td>
+      <td>string</td>
+      <td>Валюта оплаты</td>
+    </tr>
+    <tr>
+      <td>external_id</td>
+      <td>string</td>
+      <td>ID заказа в вашей системе</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>string</td>
+      <td>Описание заказа</td>
+    </tr>
+    <tr>
+      <td>attempts</td>
+      <td>int</td>
+      <td>Максимальное количество попыток оплаты по этому заказу</td>
+    </tr>
+    <tr>
+      <td>mcc</td>
+      <td>string</td>
+      <td>Код вида торговой точки</td>
+    </tr>
+    <tr>
+      <td>capture_method</td>
+      <td>string</td>
+      <td>Метод платежа</td>
+    </tr>
+    <tr>
+      <td>back_url</td>
+      <td>string</td>
+      <td>Ссылка на которую надо перенаправить после успешного платежа</td>
+    </tr>
+    <tr>
+      <td>notify_url</td>
+      <td>string</td>
+      <td>Вебхук на который прилетает данные после оплаты</td>
+    </tr>
+  </tbody>
+</table>
+
+Структура объекта `products`:
+
+<br />
+
+```javascript
+
+{
+  "name": "Шоколад",
+  "price": 200,
+  "quantity": 2
+}
+
+```
+
+<br />
+
+Поля должны содержать следующие данные:
+
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Поле</th>
+      <th>Тип данных</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>string</td>
+      <td>Название продукта</td>
+    </tr>
+
+    <tr>
+      <td>price</td>
+      <td>float</td>
+      <td>Цена продукта</td>
+    </tr>
+
+    <tr>
+      <td>quantity</td>
+      <td>int</td>
+      <td>Количество</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<br />
+
+## Шаг 2 - Перенаправьте клиента на платежную форму
+
+---
+
+<br />
+
+После POST запроса вы должны получить JSON со следующим телом:
+
+<br />
+
+```json
+{
+  "created_at": "2023-10-17T22:09:47.971488",
+  "updated_at": "2023-10-17T22:09:47.971488",
+  "uuid": "f629ce3a-08b7-4be1-9121-371f59ddcc7a",
+  "amount": 8400,
+  "back_url": "https://asadalpay.com",
+  "notify_url": "https://asadalpay.com",
+  "description": "Оплата за груз",
+  "status": "UNPAID",
+  "currency": "KZT",
+  "checkout_url": "http://pay-dev.asadalpay.com/checkout/
+  f629ce3a-08b7-4be1-9121-371f59ddcc7a",
+  "external_id": "string",
+  "receiver": "merchant_test",
+  "products": [
+    {
+      "name": "Шоколад",
+      "price": 200,
+      "quantity": 2
+    },
+    {
+      "name": "Очки",
+      "price": 2000,
+      "quantity": 4
+    }
+  ]
+}
+```
+
+<br />
+
+Поля должны содержать следующие данные:
+
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Поле</th>
+      <th>Тип данных</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>created_at</td>
+      <td>string</td>
+      <td>Время создания заказа</td>
+    </tr>
+
+    <tr>
+      <td>updated_at</td>
+      <td>string</td>
+      <td>Время обновления заказа</td>
+    </tr>
+
+    <tr>
+      <td>uuid</td>
+      <td>string</td>
+      <td>uuid заказа</td>
+    </tr>
+
+    <tr>
+      <td>amount</td>
+      <td>float</td>
+      <td>Сумма заказа</td>
+    </tr>
+    <tr>
+      <td>back_url</td>
+      <td>string</td>
+      <td>Страница перенаправления</td>
+    </tr>
+    <tr>
+      <td>notify_url</td>
+      <td>string</td>
+      <td>Вебхук для обратного ответа</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>string</td>
+      <td>Описание заказа</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>string</td>
+      <td>Статус заказа</td>
+    </tr>
+    <tr>
+      <td>currency</td>
+      <td>string</td>
+      <td>Валюта заказа</td>
+    </tr>
+    <tr>
+      <td>checkout_url</td>
+      <td>string</td>
+      <td>Ссылка на форму оплаты</td>
+    </tr>
+
+    <tr>
+      <td>external_id</td>
+      <td>string</td>
+      <td>Id мерчанта</td>
+    </tr>
+
+    <tr>
+      <td>receiver</td>
+      <td>string</td>
+      <td>Название мерчанта</td>
+    </tr>
+
+    <tr>
+      <td>products</td>
+      <td>array</td>
+      <td>Список продуктов заказа</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<br />
+
+Поле `checkout_url` содержит ссылку на страницу оплаты по которому перейдет конечный клиент и указав платежные данные совершит покупку
+
+<br />
+
+Платежная форма выглядит следующим образом:
+
+<br />
+
+![](/docs/screen.png)
+
+<br />
+
+## Шаг 3 - Получите результаты оплаты
+
+---
+
+<br />
+
+Заказ можно считать успешным, как только он перешел в статус `PAID` в зависимости от способа списания денег.
+
+<br />
+
+Если пользователь передумает платить или что-то пойдет не так, заказ останется в статусе `UNPAID`.
+
+<br />
+
+Также вы можете следить за статусом, запрашивая информацию о заказе удобной для вас периодичностью.
+Для этого вам понадобится идентификатор заказа — значение параметра uuid в созданном объекте заказа.
+
+<br />
+
+```html
+GET: https://api-dev.asadalpay.com/api/orders/{order_uuid}
+```
+
+<br />
+
+### Подтверждение заказа
+
+<br />
+
+В случае если при создании заказа была указана поле **HOLD** в `capture_method` то после оплаты происходит холдирование платежа со статусом «Удержание» (**IN_HOLD**). После чего необходимо будет её подтвердить в личном кабинете в CRM-системе либо через API.
+
+<br />
+
+_Request_
+
+<br />
+
+POST запрос по следующему url:
+
+<br />
+
+```html
+https://api-dev.asadalpay.com/api/orders/confirm/{order_uuid}
+```
+
+<br />
+
+```javascript
+// Body
+
+{
+    "reason" : "{причина подтверждение}"
+}
+
+// Headers:
+
+"api-key": "eyJhbGciO..."
+
+
+```
+
+<br />
+
+_Response_
+
+<br />
+
+```JSON
+{
+        "name": "CONFIRM", (Название транзакции),
+        "payment_status": "CONFIRMED", (Статус платежа),
+        "status": "SUCCEEDED", (Статус транзакции),
+        "error_code": "", (Код ошибки),
+        "error_description": "", (Описание ошибки)
+}
+```
+
+<br />
+
+### Отмена платежа
+
+<br />
+
+Если заказ был создан, оплачен и захолдирован (capture_method) то его можно отменить если не было совершено подтверждение. Отменить платеж можно в личном кабинете в CRM-системе либо через API.
+
+<br />
+
+_Request_
+
+<br />
+
+POST запрос по следующему url:
+
+<br />
+
+```html
+https://api-dev.asadalpay.com/api/orders/cancel/{order_uuid}
+```
+
+<br />
+
+```javascript
+// Body
+
+{
+"reason" : "{причина отмены}"
+}
+
+// Headers:
+
+"api-key": "eyJhbGciO..."
+
+```
+
+<br />
+
+_Response_
+
+<br />
+
+```JSON
+{
+        "name": "CANCEL", (Название транзакции),
+        "payment_status": "CANCELLED", (Статус платежа),
+        "status": "SUCCEEDED", (Статус транзакции),
+        "error_code": "", (Код ошибки),
+        "error_description": "", (Описание ошибки)
+}
+```
+
+<br />
+
+### Возврат отмененного платежа
+
+<br />
+
+Если заказ был оплачен, подтвержден и необходимо совершить возврат (refund). Возврат платежа можно совершить в личном кабинете CRM-системы либо через API:
+
+<br />
+
+_Request_
+
+<br />
+
+POST запрос по следующему url:
+
+<br />
+
+```html
+https://api-dev.asadalpay.com/api/orders/refund/{order_uuid}
+```
+
+<br />
+
+```javascript
+// Body
+
+{
+    "reason" : "{причина возврата}"
+}
+
+// Headers:
+
+"api-key": "eyJhbGciO..."
+
+```
+
+<br />
+
+_Response_
+
+<br />
+
+```JSON
+{
+        "name": "REFUND", (Название транзакции),
+        "payment_status": "REFUNDED", (Статус платежа),
+        "status": "SUCCEEDED", (Статус транзакции),
+        "error_code": "", (Код ошибки),
+        "error_description": "", (Описание ошибки)
+}
+```
+
+<br />
+
+### Фильтрация платежей
+
+<br />
+
+Можно произвести фильтрацию платежей через API. Фильтрация производится по следующим полям:
+
+<br />
+
+_1. Статуc:_
+
+<br />
+
+**Query: status**
+
+<br />
+
+- CONFIRMED - Подтвержден
+- IN_HOLD - Захолдирован
+- DECLINED - Отклонен
+- TDS_AUTH_REQUIRED - На стадии 3ds
+- CANCELLED - Отменен
+- REFUNDED - Возвращен
+
+<br />
+
+_2. Дата:_
+
+<br />
+
+**Query:**
+
+<br />
+
+- **from-date** - фильтрация платежей от этой даты. В формате `%Y-%m-%d.` Например, 2023-06-12
+- **to-date** - фильтрация платежей до этой даты. В формате `%Y-%m-%d.` Например, 2023-06-16
+
+<br />
+
+_3. Сумма:_
+
+<br />
+
+**Query:**
+
+<br />
+
+- **min-amount** - минимальная сумма для фильтрации
+- **max-amount** - максимальная сумма для фильтрации
+
+<br />
+
+_4. UUID:_
+
+<br />
+
+**Query:**
+
+<br />
+
+- **uuid** - идентификатор платежа
+- **order-uuid** - платежи по id заказу
+
+<br />
+
+_5. Платежным системам:_
+
+<br />
+
+**Query:**
+
+<br />
+
+- **card_system** - фильтрации по МПС (значения могут быть VISA, MASTERCARD)
+
+<br />
+
+_Request_
+
+<br />
+
+Необходимо поля отправить как Query. Обязательное поле: `page` (номер страницы)
+
+GET запрос по следующему url:
+
+<br />
+
+```html
+https://api-dev.asadalpay.com/api/transactions?page=1&limit=10 \\ Headers
+"api-key": "eyJhbGciO..."
+```
+
+<br />
+
+_Response_
+
+<br />
+
+- `total_pages` - это общее количество страниц
+- `payments` - платежи
+- created_at - дата создания платежа
+- updated_at - дата обновления платежа
+- merchant_name - название мерчанта
+- email - почта пользователя
+- amount - сумма заказа
+- order_uuid - идентификатор заказа
+- status - статус платежа
+- uuid - идентификатор платежа
+- total_fee_amount - общая сумма комиссии
+- card_system - МПС
+- reimbursement_amount - сумма возмещения за минусом комиссии
+- transactions - история действия с платежем
+- created_at - дата создания
+- updated_at - дата обновления
+
+- name - название транзакции (
+
+  - REFUND - Транзакция Возврата
+  - CANCEL -Транзакция отмены
+  - CONFIRM - Транзакция Подтверждения
+  - INIT_HOLD - Транзакция двухфакторного платежа
+  - INIT_AUTO_PAYMENT - Транзакция однофакторного платежа
+    )
+
+- error_code - код ошибки
+- error_description - описание ошибки
+
+<br />
+
+```JSON
+
+{
+  "total_pages": 6,
+  "payments": [
+    {
+      "created_at": "2024-02-12T15:49:29.229051",
+      "updated_at": "2024-02-12T16:48:34.789161",
+      "merchant_name": "testmerchant",
+      "email": "test122@mail.ru",
+      "amount": 400.51,
+      "order_uuid": "bdab8978-4180-47db-8bf4-c7dfdb04ead8",
+      "status": "REFUNDED",
+      "uuid": "77c76550-ff57-4cbc-87fe-c0afef607f44",
+      "total_fee_amount": 0,
+      "card_system": "VISA",
+      "reimbursement_amount": 400.51,
+      "transactions": [
+        {
+          "created_at": "2024-02-12T15:49:29.229051",
+          "updated_at": "2024-02-12T15:49:29.266188",
+          "name": "INIT_AUTO_PAYMENT",
+          "status": "SUCCEEDED",
+          "error_code": null,
+          "error_description": null
+        },
+        {
+          "created_at": "2024-02-12T16:48:34.767161",
+          "updated_at": "2024-02-12T16:48:34.789161",
+          "name": "REFUND",
+          "status": "SUCCEEDED",
+          "error_code": null,
+          "error_description": null
+        }
+      ]
+    },
+  ]
+}
+
+
+```

@@ -1,0 +1,21 @@
+.container {
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1560px) {
+  .container {
+    width: 70%;
+  }
+}

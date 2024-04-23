@@ -1,0 +1,182 @@
+.article {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: #efefef;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+.banner {
+  padding-top: 2em;
+  position: relative;
+}
+
+.bannerImage {
+  background-size: 160%;
+  background-repeat: no-repeat;
+  width: 25em;
+  height: 16em;
+  padding: 0;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+}
+
+.bannerText {
+  width: 25em;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.design {
+  background-image: url("../../../../../../public/design_interface.png");
+  background-position: left;
+}
+
+.servers {
+  background-image: url("../../../../../../public/fast_servers.png");
+  background-position: right;
+}
+
+.designText {
+  background-color: #f0fcee;
+}
+
+.serversText {
+  background-color: #dfeaec;
+}
+.descText {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .bannerText {
+    position: absolute;
+    background-color: transparent;
+    display: none;
+  }
+  .descText {
+    display: block;
+  }
+
+  .designText {
+    background: none;
+    align-self: flex-end;
+    width: 33%;
+    margin: 0 20px 40px 0;
+  }
+
+  .serversText {
+    background: none;
+    bottom: 0;
+    left: 100px;
+    width: 33%;
+    margin: 0 0 40px 20px;
+  }
+
+  .bannerImage {
+    width: 34em;
+    border-radius: 35px;
+    background-size: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .designText {
+    bottom: 0;
+  }
+
+  .serversText {
+    bottom: 0;
+  }
+
+  .bannerImage {
+    width: 80%;
+    border-radius: 35px;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 1.5em;
+  }
+
+  .designText {
+    bottom: 3em;
+  }
+
+  .serversText {
+    bottom: 3em;
+  }
+
+  .bannerImage {
+    max-width: 1280px;
+    height: 21em;
+    background-size: cover;
+    border-radius: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .banner {
+    max-width: 1280px;
+    overflow: hidden;
+  }
+
+  .designText {
+    bottom: 3em;
+    width: 35%;
+    font-size: 1.2rem;
+  }
+
+  .serversText {
+    bottom: 3em;
+    width: 40%;
+    font-size: 1.2rem;
+  }
+
+  .bannerImage {
+    height: 26em;
+  }
+}
+
+@media (min-width: 1560px) {
+  .designText {
+    bottom: 3em;
+    right: 10%;
+    width: auto;
+    max-width: 400px;
+  }
+
+  .serversText {
+    bottom: 3em;
+    left: 21%;
+    width: auto;
+    max-width: 400px;
+
+  }
+
+  .bannerImage {
+    width: 100%;
+    height: 26em;
+    border-radius: 40px;
+  }
+  .design {
+    background-position: left 0;
+  }
+  
+}
+
